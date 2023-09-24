@@ -7,15 +7,24 @@ import Footer from './components/Footer';
 export default function App() {
   return (
     <>
-      <View style={{flex: 1, backgroundColor: '#495E57'}}>
+      <View style={styles.container}>
         <Header />  
         <WelcomeScreen />
       </View>
       
-      <View style={{ backgroundColor: '#495E57' }}>
+      <View style={styles.footer}>
         <Footer />
       </View>
     </>
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    backgroundColor: '#333333'
+  },
+  footer: {
+    backgroundColor: '#333333'
+  }
+})
