@@ -3,20 +3,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header';
 import WelcomeScreen from './WelcomeScreen';
 import Footer from './components/Footer';
-import MenuItemsFL from './components/MenuItemsFL';
 import MenuItems from './components/MenuItemsSV';
+import MenuItemsFL from './components/MenuItemsFL';
+import MenuItemsSL from './components/MenuItemsSL';
 
 export default function App() {
   return (
     <>
       <View style={styles.container}>
         <Header />
-        <WelcomeScreen />
-        <MenuItemsFL />
+        {/* <WelcomeScreen /> */}
+        <MenuItemsSL />
       </View>
-      {/* <View style={styles.list}>
-        <MenuItemsFL />
-      </View> */}
       <View style={styles.footer}>
         <Footer />
       </View>
