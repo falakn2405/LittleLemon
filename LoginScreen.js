@@ -1,29 +1,44 @@
 import * as React from 'react';  
-import { Text, StyleSheet, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { Text, StyleSheet, TextInput, ScrollView, KeyboardAvoidingView, Platform, Pressable, View, Alert } from 'react-native';
 
 export default function LoginScreen() {
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePass] = React.useState('');
+    const [loggedIn, onLoggedIn] = React.useState(false);
 
     return (
         <KeyboardAvoidingView style={styles.container}
             behavior={Platform.OS === 'android' ? 'padding' : 'height'}>
             <ScrollView keyboardDismissMode='on-drag'>
                 <Text style={styles.headerText}>Welcome to Little Lemon</Text>
-                <Text style={styles.regularText}>Login to continue </Text>
-                <TextInput
-                    style={styles.input}  
-                    value={email} 
-                    onChange={onChangeEmail} 
-                    placeholder='Email Adress'
-                />
-                <TextInput
-                    style={styles.input}
-                    secureTextEntry={true}
-                    value={password} 
-                    onChange={onChangePass} 
-                    placeholder='Password'
-                />
+                {!loggedIn && (
+                    <View>
+                        <Text style={styles.regularText}>Login to continue </Text>
+                        <TextInput
+                            style={styles.input}  
+                            value={email} 
+                            onChange={onChangeEmail} 
+                            placeholder='Email Adress'
+                            clearButtonMode={'always'}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            secureTextEntry={true}
+                            value={password} 
+                            onChange={onChangePass} 
+                            placeholder='Password'
+                        />
+                        <Pressable style={styles.button}
+                            onPress={() => {onLoggedIn(!loggedIn)}}>
+                            <Text style={styles.buttonText}>
+                                Log In
+                            </Text>
+                        </Pressable>
+                    </View>
+                )}
+                {loggedIn && (
+                    <Text style={styles.headerText}>You are logged inn!</Text>
+                )}
             </ScrollView>
         </KeyboardAvoidingView>
     );
@@ -54,6 +69,19 @@ const styles = StyleSheet.create({
         fontSize: 16,
         borderColor: '#EDEFEE',
         backgroundColor: 'white',
-    }
+    },
+    button: {
+        padding: 10,
+        marginVertical: 8,
+        margin: 95,
+        backgroundColor: '#EE9972',
+        borderColor: '#EE9972',
+        borderRadius: 25
+    },
+    buttonText: {
+        color: '#333333',
+        textAlign: 'center',
+        fontSize: 30,
+    },
 });
   
