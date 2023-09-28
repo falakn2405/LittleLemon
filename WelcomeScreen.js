@@ -1,5 +1,5 @@
 import * as React from 'react';  
-import { Text, StyleSheet, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { Text, StyleSheet, TextInput, ScrollView, KeyboardAvoidingView, Platform, Image, View } from 'react-native';
 
 export default function WelcomeScreen() {
     const [firstName, onChangeFirstName] = React.useState('');
@@ -10,9 +10,19 @@ export default function WelcomeScreen() {
         <KeyboardAvoidingView style={styles.container}
             behavior={Platform.OS === 'android' ? 'padding' : 'height'}>
             <ScrollView keyboardDismissMode='on-drag'>
-                <Text style={styles.headingSection}>
+                <View style={styles.headerWrapper}>
+                    <Image resizeMode='contain' 
+                        style={styles.img}
+                        source={require('./img/logo.png')}
+                        accessible={true}
+                        accessibilityLabel='Little Lemon Logo'
+                    />
+                    <Text style={styles.headingSection}>Little Lemon</Text>
+                </View>
+                {/* <Text style={styles.headingSection}>
                     Welcome to Little Lemon
-                </Text>
+                </Text> */}
+                
                 <Text style={styles.infoSection}>
                     Little Lemon is a charming neighborhood bistro that serves simple food
                     and classic cocktails in a lively but casual environment. We would love
@@ -42,9 +52,14 @@ export default function WelcomeScreen() {
 }
 
 const styles = StyleSheet.create({
+    img: {
+        width: 100,
+        height: 100,
+        borderRadius: 20,
+    },
     container: {
         flex: 1,
-        backgroundColor: '#495E57',
+        backgroundColor: '#333333',
     },
     input: {
         height: 40,
@@ -69,14 +84,20 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         color: '#EDEFEE',
         textAlign: 'center',
-        backgroundColor: '#495E57',
+        backgroundColor: '#333333',
     },
     headingSection: {
-        fontSize: 28,
-        padding: 20,
-        marginVertical: 8,
+        paddingRight: 10,
+        paddingLeft: 20,
+        paddingTop: 30,
+        paddingBottom: 10,
+        fontSize: 30,
         color: '#EDEFEE',
         textAlign: 'center',
-        backgroundColor: '#495E57',
+    },
+    headerWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        margin: 10,
     },
 })

@@ -13,7 +13,7 @@ export default function App() {
     <>
       <View style={styles.container}>
         <Header />
-        <LoginScreen />
+        <WelcomeScreen />
       </View>
       <View style={styles.footer}>
         <Footer />
