@@ -1,7 +1,7 @@
 import * as React from 'react';  
 import { Text, StyleSheet, TextInput, ScrollView, KeyboardAvoidingView, Platform, Pressable, View, Alert } from 'react-native';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
     const [email, onChangeEmail] = React.useState('');
     const [password, onChangePass] = React.useState('');
     const [loggedIn, onLoggedIn] = React.useState(false);
@@ -29,7 +29,7 @@ export default function LoginScreen() {
                             placeholder='Password'
                         />
                         <Pressable style={styles.button}
-                            onPress={() => {onLoggedIn(!loggedIn)}}>
+                            onPress={() => {navigation.navigate('Welcome')}}>
                             <Text style={styles.buttonText}>
                                 Log In
                             </Text>
@@ -47,6 +47,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#333333',
     },
     headerText: {
         padding: 40,
