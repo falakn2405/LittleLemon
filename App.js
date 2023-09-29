@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { useDeviceOrientation } from '@react-native-community/hooks';
 import Header from './components/Header';
 import WelcomeScreen from './WelcomeScreen';
 import LoginScreen from './LoginScreen';
@@ -9,6 +10,7 @@ import MenuItemsFL from './components/MenuItemsFL';
 import MenuItemsSL from './components/MenuItemsSL';
 
 export default function App() {
+  const orientationn = useDeviceOrientation()
   return (
     <>
       <View style={styles.container}>
