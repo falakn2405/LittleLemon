@@ -1,24 +1,44 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { useDeviceOrientation } from '@react-native-community/hooks';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
 import Header from './components/Header';
-import WelcomeScreen from './WelcomeScreen';
-import Login from './LoginScreen';
+import WelcomeScreen from './WelcomeScreen';;
 import Footer from './components/Footer';
+import MenuItemsSL from './components/MenuItemsSL';
 import LoginScreen from './LoginScreen';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer>
       <View style={styles.container}>
         <Header />
-        <Stack.Navigator initialRouteName='Login' screenOptions={{headerStyle: {backgroundColor: '#FBDABB'}}}>
+        {/* <Stack.Navigator initialRouteName='Login' screenOptions={{headerStyle: {backgroundColor: '#FBDABB'}}}>
           <Stack.Screen options={{title: 'Home'}} name='Welcome' component={WelcomeScreen} />
           <Stack.Screen name='Login' component={LoginScreen} />
-        </Stack.Navigator>
+        </Stack.Navigator> */}
+        <Tab.Navigator 
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              if(route.name === 'Welcome') {
+                iconName = focused ? 'ios-information-circle' 
+                : 'ios-information-circle-outline';
+              } else if (route.name === 'Login') {
+                iconName = 'log-in-outline';
+              }
+              return <Ionicons name={iconName} size={size} color={color} />
+            },
+            tabBarActiveTintColor: 'tomato',
+            tabBarInactiveTintColor: 'gray',
+          })}>
+          <Tab.Screen name='Welcome' component={WelcomeScreen} />
+          <Tab.Screen name='Login' component={LoginScreen} />
+        </Tab.Navigator>
       </View>
       <View style={styles.footer}>
         <Footer />
