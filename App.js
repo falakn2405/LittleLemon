@@ -26,18 +26,17 @@ export default function App() {
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
               if(route.name === 'Welcome') {
-                iconName = focused ? 'ios-information-circle' 
-                : 'ios-information-circle-outline';
+                iconName = 'ios-home';
               } else if (route.name === 'Login') {
-                iconName = 'log-in-outline';
+                iconName = 'ios-enter';
               }
               return <Ionicons name={iconName} size={size} color={color} />
             },
             tabBarActiveTintColor: 'tomato',
             tabBarInactiveTintColor: 'gray',
-          })}>
-          <Tab.Screen name='Welcome' component={WelcomeScreen} />
+          })} initialRouteName='Login'>
           <Tab.Screen name='Login' component={LoginScreen} />
+          <Tab.Screen name='Welcome' component={WelcomeScreen} />
         </Tab.Navigator>
       </View>
       <View style={styles.footer}>
