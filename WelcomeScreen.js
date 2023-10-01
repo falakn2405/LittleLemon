@@ -1,11 +1,4 @@
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  useColorScheme,
-} from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Image, useColorScheme, } from 'react-native';
 
 export default function WelcomeScreen() {
   const colorScheme = useColorScheme();
